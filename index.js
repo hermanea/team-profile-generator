@@ -32,8 +32,8 @@ const start = async () => {
                 message: "Please enter the office number of your team manager."
             }
         ])
-        team.push(new Manager(userInput.managerName, userInput.managerId, userInput.managerEmail, userInput.managerOfficeNumber))
-        manager = userInput.managerName
+        teamProfiles.push(new Manager(managerInfo.managerName, managerInfo.managerId, managerInfo.managerEmail, managerInfo.managerOfficeNumber))
+        manager = managerInfo.managerName
         console.log(manager);
         await addTeamMembers()
 
@@ -54,7 +54,7 @@ const addTeamMembers = async () => {
             choices: ["Engineer", "Intern", "None"]
         },
     ])
-    if (employee.type === "Enginer") {
+    if (employee.type === "Engineer") {
         addEngineer()
     } else if (employee.type === "Intern") {
         addIntern()
@@ -68,10 +68,7 @@ const teamComplete = async () => {
         {
             type: 'confirm',
             name: 'choice',
-            message: 
-`Have you finished compiling your team? \n
-${question} \n
-`
+            message: ''
         }
     ])
     const text = generateHtml(teamProfiles)
@@ -110,8 +107,8 @@ const addEngineer = async () => {
             message: 'Please enter the GitHub username of your engineer',
         },
     ])
-    team.push(new Engineer(employee.name, employee.id, employee.email, employee.github))
-    engineers.push((employee.name))
+    teamProfiles.push(new Engineer(employee.name, employee.id, employee.email, employee.github))
+    // engineers.push((employee.name))
     addTeamMembers()
 }
 
@@ -138,7 +135,7 @@ const addIntern = async () => {
             message: 'Please enter the school attended by your intern.',
         },
     ])
-    team.push(new Intern(employee.name, employee.id, employee.email, employee.school))
-    interns.push((employee.name))
+    teamProfiles.push(new Intern(employee.name, employee.id, employee.email, employee.school))
+    // interns.push((employee.name))
     addTeamMembers()
 }
