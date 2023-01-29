@@ -68,12 +68,12 @@ const teamComplete = async () => {
         {
             type: 'confirm',
             name: 'choice',
-            message: ''
+            message: 'Are you finished compiling your team?'
         }
     ])
     const text = generateHtml(teamProfiles)
     if (user.choice) {
-        console.log('Goodbye!');
+        console.log('Your team is now complete!');
         fs.writeFile('./index.html', text, (err) => {
             if(err){
                 console.log(err)
